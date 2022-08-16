@@ -1,6 +1,6 @@
 // constants
 
-const URL = 'https://openweathermap.org';
+const URL = 'https://cors-anywhere.herokuapp.com/https://openweathermap.org/data/2.5/weather?q=';
 const API_KEY = '900b111bf759049f45cf0fa4740e0d24';
 
 
@@ -18,16 +18,14 @@ function handleSubmit(event) {
     event && event.preventDefault(''); 
 
     const city = $input.val('');
-    const state = $input.val('');
-    const country = $input.val('');
-    const limit = $input.val('');
+    
     // immediately exit the function if no title provided
     
-    const promise = $.ajax(`${URL}/geo/1.0/direct?q=${city}, ${state}, ${country}&limit=${limit}&appid=${API_KEY}`);
+    const promise = $.ajax(`${URL}${city}&appid=${API_KEY}`);
     
-   
     
-    promise.then(
+    
+    promise.then(    
         function(data) {
             // success callback
             console.log('Data: ', data);
